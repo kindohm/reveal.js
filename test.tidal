@@ -1,0 +1,19 @@
+
+cps 1
+
+
+d1 $ every 3 (slow 2) $ 
+    every 2 (fast 2) $ sound "peri*4" 
+    # n "1 2 3 4"
+    # pan (slow 2 $ sine)
+
+
+d1 $ every 2 (rev) $ every 3 (slow 1.5) $ 
+    chop 16 $ sound "cpr ch*4"
+
+
+hush
+
+
+
+

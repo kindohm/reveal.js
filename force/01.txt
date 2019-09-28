@@ -1,0 +1,26 @@
+void main () {
+    vec3 x = sin(rotate ( uv(), vec2(0,0), time*0.1).x*bands.y*11.2) * red;
+    vec3 y = sin(rotate ( uv(), vec2(0,0), bands.y*4.1).y+time*0.1*bands.x*1.1) * green;
+    vec3 z = sin(rotate ( uv(), vec2(0,0), time*0.1).x*bands.w*111.2) * blue;
+	gl_FragColor = vec4(black + x - y + z, 1.0);
+}
+
+void main () {
+
+    vec3 color = step(.3, voronoi(uv() * bands.w)) * blue;
+    
+    vec3 color2 = step(.2, voronoi(rotate( uv(), vec2(0,0), 5.1*bands.y) * bands.z + time*0.1)) * orange;
+    
+    vec3 color3 = step(.3, voronoi( rotate(uv(), vec2(0,0), time*0.02) * bands.z + time*0.27)) * green;
+
+    gl_FragColor = vec4(black + color + color2 - color3, 1.0);
+}
+
+void main () {
+
+    vec3 color = step(.6, voronoi(uv() * bands.w*30.)) * yellow;
+    vec3 color2 = step(.5, fract(uv().x * bands.y*6.1)) * purple;
+    vec3 color3 = step(.5, fract(rotate(uv(), vec2(0,0), bands.z*5.1).y * bands.x*2.7)) * red;
+    
+    gl_FragColor = vec4(black + color - color2 + color3, 1.0);
+}
